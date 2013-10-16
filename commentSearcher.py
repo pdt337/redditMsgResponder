@@ -3,8 +3,8 @@ import time
 
 def comments():
     USER_AGENT="Comment responder by /u/badpokerface12 for /u/PM_ME_YOUR_TITS_GIRL" #describes what the bot does 
-    USER_NAME="badpokerface12" #insert user name here
-    PASS_WD="phideltatheta12" #insert password here 
+    USER_NAME="" #insert user name here
+    PASS_WD="" #insert password here 
     
     reddit=praw.Reddit(USER_AGENT) #creats the bot
     reddit.login(USER_NAME,PASS_WD)
