@@ -1,10 +1,11 @@
 import praw
 import time
+import random
 
 def comments():
     USER_AGENT="Comment responder by /u/badpokerface12 for /u/PM_ME_YOUR_TITS_GIRL" #describes what the bot does 
-    USER_NAME="" #insert user name here
-    PASS_WD="" #insert password here 
+    USER_NAME=" " #insert user name here
+    PASS_WD=" " #insert password here 
     
     reddit=praw.Reddit(USER_AGENT) #creats the bot
     reddit.login(USER_NAME,PASS_WD)
@@ -18,7 +19,7 @@ def comments():
         for msg in messages:
             if ((name(msg.body)) & (msg.id not in checked)):
                 checked.add(msg.id)
-                msg.reply("Yup. /r/PM_ME_YOUR_TITS_GIRL with permission from the girl who sends me the PM, I post the photo to my subreddit. No permission, the pic is kept private. [more info](www.redditwikilinktomoreinfo.com)")
+                msg.reply(replyPicker())
             if ((msg=="the hero that reddit deserves") & (msg.id not in checked)):
                 checked.add(msg.id)
                 msg.reply("[Thank You](http://blogs.discovery.com/.a/6a00d8341bf67c53ef0167688d833a970b-800wi)")
@@ -31,10 +32,30 @@ def comments():
             if ((nameM(msg)) & (msg.id not in checked)):
                 checked.add(msg.id)
                 msg.reply("Anyone who sends moobs, dick pic, or gore is put on my ignore list and banned from the subreddit. A few have, but not many.")
+	    if(msg=="Okay."):
+		msg.reply("I shouldnt be doing this at 230 am and yeah i do this better when you know ....  Please text me or let know if you get this")
+		print("I can still do this drunk")
             else:
                 msg.mark_as_unread()
-            print "Going to sleep"
-            time.sleep(120)
+            sleep_time= timePicker()
+            print "Going to sleep for {0} seconds".format(sleep_time)
+            time.sleep(sleep_time)
+
+
+
+def timePicker():
+	times=[60,120,30,200,300,250,100,75,175]
+        return random.choice(times)
+
+
+def replyPicker():
+    replies=["/r/PM_ME_YOUR_TITS_GIRL is my subreddit. With permission from the sender and age verification, I post their pic here. No permission and verification, no post. Let’s keep this about Rampart people. (More FAQ)",
+             "You may check my “link” history to see what I have posted. /r/PM_ME_YOUR_TITS_GIRL is my subreddit. With permission from the sender and age verification, I post their pic here. No permission and verification, no post. (More FAQ)",
+             "/r/PM_ME_YOUR_TITS_GIRL is my subreddit. With permission from the sender and age verification, I post their pic here. No permission and verification, no post. Let’s keep this about Rampart people. (More FAQ)",
+             "/r/PM_ME_YOUR_TITS_GIRL is my subreddit. With permission from the sender and age verification, I post their pic here. No permission and verification, no post. You can check my “link” history to see what I have posted. (More FAQ)",
+             "I do get PM’s of boobies. /r/PM_ME_YOUR_TITS_GIRL is my subreddit. With permission from the sender and age verification, I post their pic here. No permission and verification, no post. (More FAQ)"]
+    return random.choice(replies)
+	
 
 def nameM(msg):
     notTits=["No manboobs?","Of those few, how many are man-boobs?","Your the one username that probably everybody will remember. Btw has any guy ever pm'd his moobs?","I'll send you a picture of my dick.",
