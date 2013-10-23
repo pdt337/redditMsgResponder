@@ -33,8 +33,7 @@ def comments():
                 checked.add(msg.id)
                 msg.reply("Anyone who sends moobs, dick pic, or gore is put on my ignore list and banned from the subreddit. A few have, but not many.")
 	    if(msg=="Okay."):
-		msg.reply("I shouldnt be doing this at 230 am and yeah i do this better when you know ....  Please text me or let know if you get this")
-		print("I can still do this drunk")
+		msg.reply("Test Reply")
             else:
                 msg.mark_as_unread()
             sleep_time= timePicker()
